@@ -1,3 +1,81 @@
+/* Fondo general */
 body {
-    background-color: #FFFFFF;
+  margin: 0;
+  background-color: #0d1a2b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+/* Contenedor principal con cuadrícula 2x2 */
+.pantalla {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  width: 90%;
+  height: 80%;
+  border: 6px solid #0033cc;
+  background-color: #0033cc;
+  gap: 4px;
+  box-sizing: border-box;
+}
+
+/* Cada cuadro */
+.cuadro {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 2px;
+}
+
+/* Video */
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* mantiene proporción sin deformar */
+  opacity: 0.85;
+}
+
+/* Colores de fondo según boceto */
+.mercado {
+  background-color: #f8c963; /* amarillo */
+}
+
+.plaza {
+  background-color: #8ab9ff; /* azul */
+}
+
+.uam {
+  background-color: #e9967a; /* rojizo */
+}
+
+.terminal {
+  background-color: #c58af7; /* morado */
+}
+
+/* Barra inferior */
+.barra {
+  width: 90%;
+  height: 50px;
+  background-color: #777;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 4px solid #0033cc;
+}
+
+.botones {
+  display: flex;
+  gap: 10px;
+}
+
+.icono {
+  width: 40px;
+  height: 20px;
+  background-color: #ccc;
+  border-radius: 3px;
 }
