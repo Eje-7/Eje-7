@@ -1,15 +1,15 @@
-const videos = document.querySelectorAll(".video-box");
+// Seleccionar elementos
+const miVideo = document.getElementById('miVideo');
+const playPauseBtn = document.getElementById('playPauseBtn');
+const muteBtn = document.getElementById('muteBtn');
 
-videos.forEach(box => {
-  const video = box.querySelector("video");
-  const playBtn = box.querySelector(".play");
-  const pauseBtn = box.querySelector(".pause");
-  const muteBtn = box.querySelector(".mute");
-
-  playBtn.addEventListener("click", () => video.play());
-  pauseBtn.addEventListener("click", () => video.pause());
-  muteBtn.addEventListener("click", () => {
-    video.muted = !video.muted;
-    muteBtn.textContent = video.muted ? "🔊" : "🔇";
-  });
+// Evento para reproducir/pausar video
+playPauseBtn.addEventListener('click', () => {
+  if (miVideo.paused) {
+    miVideo.play();
+    playPauseBtn.textContent = 'Pausar Video';
+  } else {
+    miVideo.pause();
+    playPauseBtn.textContent = 'Reproducir Video';
+  }
 });
