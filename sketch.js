@@ -1,15 +1,17 @@
-// Seleccionar elementos
-const miVideo = document.getElementById('miVideo');
-const playPauseBtn = document.getElementById('playPauseBtn');
-const muteBtn = document.getElementById('muteBtn');
+const video = document.getElementById("myVideo");
 
-// Evento para reproducir/pausar video
-playPauseBtn.addEventListener('click', () => {
-  if (miVideo.paused) {
-    miVideo.play();
-    playPauseBtn.textContent = 'Pausar Video';
-  } else {
-    miVideo.pause();
-    playPauseBtn.textContent = 'Reproducir Video';
-  }
-});
+      function togglePlay() {
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+
+      function muteToggle() {
+        video.muted = !video.muted;
+      }
+
+      function changeVolume(value) {
+        video.volume = value / 100;
+      }

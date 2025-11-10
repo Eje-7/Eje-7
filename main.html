@@ -7,13 +7,80 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="mercado">
-    <video src="assets/basket.mp4" controls></video>
-    <button id="playPauseBtn">Reproducir/Pausar Video</button>
-  </div>
+  <div>
+    <video
+    controls
+    width="400"
+    height="400"
+    autoplay
+    loop
+    muted>
+    <source src="assets/basket.mp4" type="video/mp4" />
+    <p>
+    Su navegador no soporta vídeo HTML5. Este es un
+    <a href="assets/basket.mp4">enlace al vídeo</a> alternativo.
+    </p>
+  </video>
 
+  <div class="custom-controls">
+        <button onclick="togglePlay()">Play/Pause</button>
+        <button onclick="muteToggle()">Mute/Unmute</button>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          onchange="changeVolume(this.value)"
+        />
+      </div>
+</div>
+
+<script>
+  const video = document.getElementById("myVideo");
+
+      function togglePlay() {
+        if (video.paused) {
+          video.play();
+        } else {
+          video.pause();
+        }
+      }
+
+      function muteToggle() {
+        video.muted = !video.muted;
+      }
+
+      function changeVolume(value) {
+        video.volume = value / 100;
+      }
+</script>
+<!--
   <div class="uam">
-    <video id="miVideo" src="assets/basket.mp4" controls></video>
+    <video
+    controls
+    width="400"
+    height="400"
+    autoplay
+    loop
+    muted>
+    <source src="assets/basket.mp4" type="video/mp4" />
+    <p>
+    Su navegador no soporta vídeo HTML5. Este es un
+    <a href="assets/basket.mp4">enlace al vídeo</a> alternativo.
+    </p>
+  </video>
+
+  <div class="custom-controls">
+        <button onclick="togglePlay()">Play/Pause</button>
+        <button onclick="muteToggle()">Mute/Unmute</button>
+        <input
+          type="range"
+          min="0"
+          max="100"
+          value="50"
+          onchange="changeVolume(this.value)"
+        />
+      </div>
   </div>
 
   <div class="plaza">
@@ -22,7 +89,7 @@
 
   <div class="terminal">
     <video src="assets/basket.mp4" controls></video>
-  </div>
+  </div>-->
   
 </body>
 </html>
