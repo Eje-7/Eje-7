@@ -1,70 +1,104 @@
- // Esperar a que el DOM cargue
-    document.addEventListener("DOMContentLoaded", () => {
-      // Seleccionamos todos los contenedores que tengan video y controles
-      const containers = document.querySelectorAll(".video-container");
+document.addEventListener("DOMContentLoaded", () => {
 
-      containers.forEach((container) => {
-        // buscamos el video y los controles DENTRO del mismo contenedor
-        const video = container.querySelector(".video");
-        const playBtn = container.querySelector(".play-btn");
-        const muteBtn = container.querySelector(".mute-btn");
-        const volumeSlider = container.querySelector(".volume-slider");
+  const mediaPairs = [
+    { video: "assets/basket.mp4", audio: "assets/moto.mp3" },
+    { video: "assets/boda.mp4", audio: "assets/sonido_voces1.mp3" },
+    { video: "assets/miyika.mp4", audio: "assets/voces_comedor.mp3" },
+    { video: "assets/cafe.mp4", audio: "assets/cafe_sonido.mp3" }
+  ];
 
-        // Inicializar el slider con el volumen actual del video
-        // (y si el video está muted, lo reflejamos)
-        const initialVolume = (video.volume !== undefined) ? Math.round(video.volume * 100) : 50;
-        if (volumeSlider) volumeSlider.value = initialVolume;
+  const containers = document.querySelectorAll(".video-container");
 
-        // Play / Pause
-        if (playBtn && video) {
-          const updatePlayIcon = () => {
-            playBtn.textContent = video.paused ? "▶️" : "⏸️";
-          };
+  containers.forEach((container) => {
+    const video = container.querySelector(".video");
+    const audio = container.querySelector(".audio");
 
-          playBtn.addEventListener("click", () => {
-            if (video.paused) video.play();
-            else video.pause();
-            updatePlayIcon();
-          });
+    // Video congtroles
+    const playBtn = container.querySelector(".play-btn");
+    const muteBtn = container.querySelector(".mute-btn");
+    const volumeSlider = container.querySelector(".volume-slider");
 
-          // Actualizar icono si el usuario usa controles nativos o APIs externas
-          video.addEventListener("play", updatePlayIcon);
-          video.addEventListener("pause", updatePlayIcon);
-          updatePlayIcon();
-        }
+    // Audio controles
+    const audioPlayBtn = container.querySelector(".audio-play-btn");
+    const audioMuteBtn = container.querySelector(".audio-mute-btn");
+    const audioVolumeSlider = container.querySelector(".audio-volume-slider");
+    
+    // Web Audio API para efectos(controlar los sonidosc pgraves)
+    const audioContext = new AudioContext();
+    const audioSource = audioContext.createMediaElementSource(audio);
+    const filter = audioContext.createBiquadFilter();
 
-        // Mute / Unmute
-        if (muteBtn && video) {
-          const updateMuteIcon = () => {
-            muteBtn.textContent = video.muted ? "🔈" : "🔇";
-          };
+    filter.type = "lowshelf";  // graves
+    filter.frequency.value = 400; // Hertz
+    filter.gain.value = 0;
 
-          muteBtn.addEventListener("click", () => {
-            video.muted = !video.muted;
-            updateMuteIcon();
-          });
+    audioSource.connect(filter);
+    filter.connect(audioContext.destination);
 
-          video.addEventListener("volumechange", updateMuteIcon);
-          updateMuteIcon();
-        }
+    // videos aleatorios
+    const randomPair = mediaPairs[Math.floor(Math.random() * mediaPairs.length)];
+    video.src = randomPair.video;
+    audio.src = randomPair.audio;
 
-        // Control de volumen (slider)
-        if (volumeSlider && video) {
-          volumeSlider.addEventListener("input", (e) => {
-            const val = Number(e.target.value);
-            video.volume = val / 100;
-            // si el usuario sube volumen, desmuteamos automáticamente
-            if (video.muted && val > 0) {
-              video.muted = false;
-            }
-          });
+    // sinergia de audio y video 
 
-          // sincronizar slider si volumen cambia desde otra parte
-          video.addEventListener("volumechange", () => {
-            if (!volumeSlider.matches(":active")) {
-              volumeSlider.value = Math.round(video.volume * 100);
-            }
-          });
-        }
-      });
+    video.addEventListener("play", () => {
+      audioContext.resume();
+      audio.play();
     });
+
+    video.addEventListener("pause", () => {
+      audio.pause();
+    });
+
+    video.loop = true;
+    audio.loop = true;
+
+   
+
+    // botones de los video
+
+    playBtn.addEventListener("click", () => {
+      if (video.paused) video.play();
+      else video.pause();
+    });
+
+    muteBtn.addEventListener("click", () => {
+      video.muted = !video.muted;
+    });
+
+    volumeSlider.addEventListener("input", (e) => {
+      video.volume = e.target.value / 100;
+    });
+
+    // botones delo audio
+    audioPlayBtn.addEventListener("click", () => {
+      if (audio.paused) {
+        audioContext.resume();
+        audio.play();
+        if (video.paused) video.play(); 
+      } else {
+        audio.pause();
+      }
+    });
+
+    audioMuteBtn.addEventListener("click", () => {
+      audio.muted = !audio.muted;
+    });
+
+    audioVolumeSlider.addEventListener("input", (e) => {
+      audio.volume = e.target.value / 100;
+    });
+
+    //  Control de tonos
+    const toneSlider = container.querySelector(".tone-slider");
+
+    if (toneSlider) {
+      toneSlider.addEventListener("input", (e) => {
+        const val = Number(e.target.value); // -30 a +30
+        filter.gain.value = val;
+      });
+    }
+
+  });
+});

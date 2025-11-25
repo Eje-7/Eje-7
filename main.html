@@ -12,56 +12,86 @@
 
     <!-- Contenedor 1 -->
     <div class="video-container">
-      
-      <video class="video" autoplay loop muted>
-        <source src="assets/basket.mp4" type="video/mp4" />
-        Tu navegador no soporta video.
-      </video>
+    <!-- VIDEO -->
+    <video class="video"  autoplay muted loop></video>
 
-      <div class="custom-controls">
-        <div class="left-controls">
-          <button class="play-btn" aria-label="Play/Pause">▶️</button>
-          <button class="mute-btn" aria-label="Silenciar">🔇</button>
-        </div>
-        <input type="range" class="volume-slider" min="0" max="100" value="50" aria-label="Volumen" />
-      </div>
+    <div class="controls">
+      <button class="play-btn">▶️</button>
+      <button class="mute-btn">🔇</button>
+      <input type="range" min="0" max="100" value="50" class="volume-slider">
     </div>
 
-    <!-- Contenedor 2 -->
-    <div class="video-container">
-      
-      <video class="video" autoplay loop muted>
-        <source src="assets/basket.mp4" type="video/mp4" />
-        Tu navegador no soporta video.
-      </video>
+    <!-- AUDIO -->
+    <div class="section-label">Audio</div>
+    <audio class="audio"></audio>
 
-      <div class="custom-controls">
-        <div class="left-controls">
-          <button class="play-btn" aria-label="Play/Pause">▶️</button>
-          <button class="mute-btn" aria-label="Silenciar">🔇</button>
-        </div>
-        <input type="range" class="volume-slider" min="0" max="100" value="50" aria-label="Volumen" />
-      </div>
+    <div class="controls">
+      <button class="audio-play-btn">▶️</button>
+      <button class="audio-mute-btn">🔇</button>
+      <input type="range" min="0" max="100" value="50" class="audio-volume-slider">
     </div>
 
-    <!-- Contenedor 3 -->
-    <div class="video-container">
+    <div class="controls">
       
-      <video class="video" autoplay loop muted>
-        <source src="assets/cafe.mp4" type="video/mp4" />
-        Tu navegador no soporta video.
-      </video>
-
-      <div class="custom-controls">
-        <div class="left-controls">
-          <button class="play-btn" aria-label="Play/Pause">▶️</button>
-          <button class="mute-btn" aria-label="Silenciar">🔇</button>
-        </div>
-        <input type="range" class="volume-slider" min="0" max="100" value="50" aria-label="Volumen" />
-      </div>
+      <input type="range" min="-30" max="30" value="0" class="tone-slider">
     </div>
-
   </div>
+
+  
+
+
+  <!-- CONTENEDOR 2 -->
+  <div class="video-container">
+    <video class="video" autoplay muted loop></video>
+
+    <div class="controls">
+      <button class="play-btn">▶️</button>
+      <button class="mute-btn">🔇</button>
+      <input type="range" min="0" max="100" value="50" class="volume-slider">
+    </div>
+
+    <div class="section-label">Audio</div>
+    <audio class="audio"></audio>
+
+    <div class="controls">
+      <button class="audio-play-btn">▶️</button>
+      <button class="audio-mute-btn">🔇</button>
+      <input type="range" min="0" max="100" value="50" class="audio-volume-slider">
+    </div>
+
+    <div class="controls">
+      <input type="range" min="-30" max="30" value="0" class="tone-slider">
+    </div>
+  </div>
+
+  
+
+
+  <!-- CONTENEDOR 3 -->
+  <div class="video-container">
+    <video class="video" autoplay muted loop></video>
+
+    <div class="controls">
+      <button class="play-btn">▶️</button>
+      <button class="mute-btn">🔇</button>
+      <input type="range" min="0" max="100" value="50" class="volume-slider">
+    </div>
+
+    <div class="section-label">Audio</div>
+    <audio class="audio"></audio>
+
+    <div class="controls">
+      <button class="audio-play-btn">▶️</button>
+      <button class="audio-mute-btn">🔇</button>
+      <input type="range" min="0" max="100" value="50" class="audio-volume-slider">
+    </div>
+
+    <div class="controls">
+      <input type="range" min="-30" max="30" value="0" class="tone-slider">
+    </div>
+  </div>
+
+  
 
   <script src="sketch.js"></script>
 </body>
