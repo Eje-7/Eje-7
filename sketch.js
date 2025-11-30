@@ -1,104 +1,91 @@
 document.addEventListener("DOMContentLoaded", () => {
 
-  const mediaPairs = [
-    { video: "assets/basket.mp4", audio: "assets/moto.mp3" },
-    { video: "assets/boda.mp4", audio: "assets/sonido_voces1.mp3" },
-    { video: "assets/miyika.mp4", audio: "assets/voces_comedor.mp3" },
-    { video: "assets/cafe.mp4", audio: "assets/cafe_sonido.mp3" }
+  const mediaList = [
+    { video: "assets/basket.mp4", audio1: "assets/moto.mp3", audio2: "assets/voces_velarias.mp3" },
+    { video: "assets/boda.mp4", audio1: "assets/sonido_voces1.mp3", audio2: "assets/voces_combi.mp3" },
+    { video: "assets/cafe.mp4", audio1: "assets/voces_comedor.mp3", audio2: "assets/cubiertos_comedor.mp3" }
   ];
 
-  const containers = document.querySelectorAll(".video-container");
+  const blocks = document.querySelectorAll(".media-block");
 
-  containers.forEach((container) => {
-    const video = container.querySelector(".video");
-    const audio = container.querySelector(".audio");
+  blocks.forEach(block => {
 
-    // Video congtroles
-    const playBtn = container.querySelector(".play-btn");
-    const muteBtn = container.querySelector(".mute-btn");
-    const volumeSlider = container.querySelector(".volume-slider");
+    const video = block.querySelector(".video");
+    const audio1 = block.querySelector(".audio1");
+    const audio2 = block.querySelector(".audio2");
 
-    // Audio controles
-    const audioPlayBtn = container.querySelector(".audio-play-btn");
-    const audioMuteBtn = container.querySelector(".audio-mute-btn");
-    const audioVolumeSlider = container.querySelector(".audio-volume-slider");
-    
-    // Web Audio API para efectos(controlar los sonidosc pgraves)
-    const audioContext = new AudioContext();
-    const audioSource = audioContext.createMediaElementSource(audio);
-    const filter = audioContext.createBiquadFilter();
+    const playBtn = block.querySelector(".play-btn");
+    const muteBtn = block.querySelector(".mute-btn");
 
-    filter.type = "lowshelf";  // graves
-    filter.frequency.value = 400; // Hertz
-    filter.gain.value = 0;
+    const sliderA1 = block.querySelector(".audio1-volume-slider");
+    const sliderA2 = block.querySelector(".audio2-volume-slider");
+    const speedSlider = block.querySelector(".speed-slider");
 
-    audioSource.connect(filter);
-    filter.connect(audioContext.destination);
-
-    // videos aleatorios
-    const randomPair = mediaPairs[Math.floor(Math.random() * mediaPairs.length)];
-    video.src = randomPair.video;
-    audio.src = randomPair.audio;
-
-    // sinergia de audio y video 
-
-    video.addEventListener("play", () => {
-      audioContext.resume();
-      audio.play();
-    });
-
-    video.addEventListener("pause", () => {
-      audio.pause();
-    });
+    // cargar videos
+    const media = mediaList[Math.floor(Math.random() * mediaList.length)];
+    video.src = media.video;
+    audio1.src = media.audio1;
+    audio2.src = media.audio2;
 
     video.loop = true;
-    audio.loop = true;
+    audio1.loop = true;
+    audio2.loop = true;
 
-   
+    video.muted = true;
+    audio1.muted = false;
+    audio2.muted = false;
 
-    // botones de los video
+    // audio context/web api
+    const ctx = new AudioContext();
+    const src1 = ctx.createMediaElementSource(audio1);
+    const src2 = ctx.createMediaElementSource(audio2);
 
+    const gain1 = ctx.createGain();
+    const gain2 = ctx.createGain();
+
+    gain1.gain.value = 1;
+    gain2.gain.value = 1;
+
+    src1.connect(gain1).connect(ctx.destination);
+    src2.connect(gain2).connect(ctx.destination);
+
+    // play/pausar
     playBtn.addEventListener("click", () => {
-      if (video.paused) video.play();
-      else video.pause();
-    });
-
-    muteBtn.addEventListener("click", () => {
-      video.muted = !video.muted;
-    });
-
-    volumeSlider.addEventListener("input", (e) => {
-      video.volume = e.target.value / 100;
-    });
-
-    // botones delo audio
-    audioPlayBtn.addEventListener("click", () => {
-      if (audio.paused) {
-        audioContext.resume();
-        audio.play();
-        if (video.paused) video.play(); 
+      ctx.resume();
+      if (video.paused) {
+        video.play();
+        audio1.play();
+        audio2.play();
       } else {
-        audio.pause();
+        video.pause();
+        audio1.pause();
+        audio2.pause();
       }
     });
 
-    audioMuteBtn.addEventListener("click", () => {
-      audio.muted = !audio.muted;
+    // mute audios
+    muteBtn.addEventListener("click", () => {
+      const muteState = !audio1.muted;
+      audio1.muted = muteState;
+      audio2.muted = muteState;
     });
 
-    audioVolumeSlider.addEventListener("input", (e) => {
-      audio.volume = e.target.value / 100;
+    // sliders
+    sliderA1.addEventListener("input", e => {
+      gain1.gain.value = e.target.value / 100;
     });
 
-    //  Control de tonos
-    const toneSlider = container.querySelector(".tone-slider");
+    sliderA2.addEventListener("input", e => {
+      gain2.gain.value = e.target.value / 100;
+    });
 
-    if (toneSlider) {
-      toneSlider.addEventListener("input", (e) => {
-        const val = Number(e.target.value); // -30 a +30
-        filter.gain.value = val;
-      });
-    }
+    speedSlider.addEventListener("input", e => {
+      const r = Number(e.target.value);
+      video.playbackRate = r;
+      audio1.playbackRate = r;
+      audio2.playbackRate = r;
+    });
 
   });
+
 });

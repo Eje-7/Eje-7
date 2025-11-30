@@ -8,26 +8,27 @@
 </head>
 </head>
 <body>
+  <!--
   <div class="container-general">
 
-    <!-- Contenedor 1 -->
+     Contenedor 1 
     <div class="video-container">
-    <!-- VIDEO -->
+     VIDEO 
     <video class="video"  autoplay muted loop></video>
 
     <div class="controls">
-      <button class="play-btn">▶️</button>
-      <button class="mute-btn">🔇</button>
+      <button class="play-btn">▶</button>
+      <button class="mute-btn">mute</button>
       <input type="range" min="0" max="100" value="50" class="volume-slider">
     </div>
 
-    <!-- AUDIO -->
+     AUDIO 
     <div class="section-label">Audio</div>
     <audio class="audio"></audio>
 
     <div class="controls">
-      <button class="audio-play-btn">▶️</button>
-      <button class="audio-mute-btn">🔇</button>
+      <button class="audio-play-btn">▶</button>
+      <button class="audio-mute-btn">mute</button>
       <input type="range" min="0" max="100" value="50" class="audio-volume-slider">
     </div>
 
@@ -40,13 +41,13 @@
   
 
 
-  <!-- CONTENEDOR 2 -->
+   CONTENEDOR 2 
   <div class="video-container">
     <video class="video" autoplay muted loop></video>
 
     <div class="controls">
-      <button class="play-btn">▶️</button>
-      <button class="mute-btn">🔇</button>
+      <button class="play-btn">▶</button>
+      <button class="mute-btn">mute</button>
       <input type="range" min="0" max="100" value="50" class="volume-slider">
     </div>
 
@@ -54,8 +55,8 @@
     <audio class="audio"></audio>
 
     <div class="controls">
-      <button class="audio-play-btn">▶️</button>
-      <button class="audio-mute-btn">🔇</button>
+      <button class="audio-play-btn">▶</button>
+      <button class="audio-mute-btn">mute</button>
       <input type="range" min="0" max="100" value="50" class="audio-volume-slider">
     </div>
 
@@ -67,13 +68,13 @@
   
 
 
-  <!-- CONTENEDOR 3 -->
+   CONTENEDOR 3 
   <div class="video-container">
     <video class="video" autoplay muted loop></video>
 
     <div class="controls">
-      <button class="play-btn">▶️</button>
-      <button class="mute-btn">🔇</button>
+      <button class="play-btn">▶</button>
+      <button class="mute-btn">mute</button>
       <input type="range" min="0" max="100" value="50" class="volume-slider">
     </div>
 
@@ -81,19 +82,85 @@
     <audio class="audio"></audio>
 
     <div class="controls">
-      <button class="audio-play-btn">▶️</button>
-      <button class="audio-mute-btn">🔇</button>
+      <button class="audio-play-btn">▶</button>
+      <button class="audio-mute-btn">mute</button>
       <input type="range" min="0" max="100" value="50" class="audio-volume-slider">
     </div>
 
     <div class="controls">
       <input type="range" min="-30" max="30" value="0" class="tone-slider">
     </div>
-  </div>
+  </div>-->
+    <div class="main-grid">
+      <!-- BLOQUE 1 -->
+       <div class="media-block">
+        <div class="video-container">
+        <video class="video" autoplay loop muted></video>
+      </div>
+      
+      <!-- audios -->
+       <audio class="audio1"></audio>
+       <audio class="audio2"></audio>
+       
+       <!-- controles -->
+       <div class="video-controls">
+        <button class="play-btn">▶</button>
+        <button class="mute-btn">🔇</button>
+      </div>
+      
+      <!-- sliders -->
+       <div class="sliders">
+        <input type="range" class="audio1-volume-slider" min="0" max="100" value="100">
+        <input type="range" class="audio2-volume-slider" min="0" max="100" value="100">
+        <input type="range" class="speed-slider" min="0.5" max="2" step="0.01" value="1">
+      </div>
 
-  
+     </div>
 
-  <script src="sketch.js"></script>
+      <!-- BLOQUE 2 -->
+        <div class="media-block">
+          <div class="video-container">
+            <video class="video" autoplay loop muted></video>
+        </div>
+        <audio class="audio1"></audio>
+        <audio class="audio2"></audio>
+
+        <div class="video-controls">
+         <button class="play-btn">▶</button>
+          <button class="mute-btn">🔇</button>
+        </div>
+
+        <div class="sliders">
+          <input type="range" class="audio1-volume-slider" min="0" max="100" value="100">
+          <input type="range" class="audio2-volume-slider" min="0" max="100" value="100">
+          <input type="range" class="speed-slider" min="0.5" max="2" step="0.01" value="1">
+        </div>
+
+        </div>
+        <!-- BLOQUE 3 -->
+        <div class="media-block">
+          <div class="video-container">
+          <video class="video" autoplay loop muted></video>
+        </div>
+        <audio class="audio1"></audio>
+        <audio class="audio2"></audio>
+      
+        <div class="video-controls">
+          <button class="play-btn">▶</button>
+          <button class="mute-btn">🔇</button>
+        </div>
+
+        <div class="sliders">
+          <input type="range" class="audio1-volume-slider" min="0" max="100" value="100">
+          <input type="range" class="audio2-volume-slider" min="0" max="100" value="100">
+          <input type="range" class="speed-slider" min="0.5" max="2" step="0.01" value="1">
+        </div>
+
+      </div>
+    </div>
+
+    <script src="sketch.js"></script>
+
 </body>
 </html>
 
