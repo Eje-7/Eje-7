@@ -2,13 +2,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const mediaList = [
     { video: "assets/basket.mp4", audio1: "assets/moto.mp3", audio2: "assets/voces_velarias.mp3" },
-    { video: "assets/boda.mp4", audio1: "assets/sonido_voces1.mp3", audio2: "assets/voces_combi.mp3" },
+    { video: "assets/combi4.mp4", audio1: "assets/sonido_voces1.mp3", audio2: "assets/voces_combi.mp3" },
     { video: "assets/cafe.mp4", audio1: "assets/voces_comedor.mp3", audio2: "assets/cubiertos_comedor.mp3" }
   ];
 
   const blocks = document.querySelectorAll(".media-block");
 
-  blocks.forEach(block => {
+  blocks.forEach((block, blockIndex) => {
 
     const video = block.querySelector(".video");
     const audio1 = block.querySelector(".audio1");
@@ -16,26 +16,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const playBtn = block.querySelector(".play-btn");
     const muteBtn = block.querySelector(".mute-btn");
-
+    
     const sliderA1 = block.querySelector(".audio1-volume-slider");
     const sliderA2 = block.querySelector(".audio2-volume-slider");
     const speedSlider = block.querySelector(".speed-slider");
+    
 
-    // cargar videos
-    const media = mediaList[Math.floor(Math.random() * mediaList.length)];
-    video.src = media.video;
-    audio1.src = media.audio1;
-    audio2.src = media.audio2;
 
-    video.loop = true;
-    audio1.loop = true;
-    audio2.loop = true;
+   
+    let currentMediaIndex = blockIndex % mediaList.length;
+    loadMediaInstant(currentMediaIndex);
 
-    video.muted = true;
-    audio1.muted = false;
-    audio2.muted = false;
-
-    // audio context/web api
+    
+    // AUDIO CONTEXT, aqui es la webapi
+    
     const ctx = new AudioContext();
     const src1 = ctx.createMediaElementSource(audio1);
     const src2 = ctx.createMediaElementSource(audio2);
@@ -49,34 +43,42 @@ document.addEventListener("DOMContentLoaded", () => {
     src1.connect(gain1).connect(ctx.destination);
     src2.connect(gain2).connect(ctx.destination);
 
-    // play/pausar
+    
+  
+    
     playBtn.addEventListener("click", () => {
       ctx.resume();
       if (video.paused) {
         video.play();
         audio1.play();
         audio2.play();
+        playBtn.textContent = "⏸";
       } else {
         video.pause();
         audio1.pause();
         audio2.pause();
+        playBtn.textContent = "▶";
       }
     });
 
-    // mute audios
+  
+   
     muteBtn.addEventListener("click", () => {
-      const muteState = !audio1.muted;
-      audio1.muted = muteState;
-      audio2.muted = muteState;
+      const state = !audio1.muted;
+      audio1.muted = state;
+      audio2.muted = state;
+      muteBtn.textContent = state ? "🔇" : "🔊";
     });
 
-    // sliders
+    // sliderse de transiciones de video/audio
     sliderA1.addEventListener("input", e => {
       gain1.gain.value = e.target.value / 100;
+      evaluateVideoChange();
     });
 
     sliderA2.addEventListener("input", e => {
       gain2.gain.value = e.target.value / 100;
+      evaluateVideoChange();
     });
 
     speedSlider.addEventListener("input", e => {
@@ -86,6 +88,64 @@ document.addEventListener("DOMContentLoaded", () => {
       audio2.playbackRate = r;
     });
 
+    function evaluateVideoChange() {
+      const total = Number(sliderA1.value) + Number(sliderA2.value);
+
+      let newIndex = 0;
+      if (total <= 80) newIndex = 0;
+      else if (total <= 140) newIndex = 1;
+      else newIndex = 2;
+
+      if (newIndex !== currentMediaIndex) {
+        fadeChange(newIndex);
+        currentMediaIndex = newIndex;
+      }
+    }
+
+    //crossfade
+    
+    function fadeChange(newIndex) {
+      const media = mediaList[newIndex];
+
+      // 1) Fade-out en 300ms
+      gsap.to(video, { opacity: 0, duration: 0.3 });
+      gsap.to([gain1.gain, gain2.gain], { value: 0, duration: 0.3 });
+
+      // 2) Cuando termina -> cambiar media
+      setTimeout(() => {
+        video.src = media.video;
+        audio1.src = media.audio1;
+        audio2.src = media.audio2;
+
+        video.currentTime = 0;
+        audio1.currentTime = 0;
+        audio2.currentTime = 0;
+
+        video.play();
+        audio1.play();
+        audio2.play();
+
+        // 3) Fade-in en 400ms
+        gsap.to(video, { opacity: 1, duration: 0.4 });
+        gsap.to(gain1.gain, { value: sliderA1.value / 100, duration: 0.4 });
+        gsap.to(gain2.gain, { value: sliderA2.value / 100, duration: 0.4 });
+
+      }, 300);
+    }
+
+   
+    function loadMediaInstant(i) {
+      const media = mediaList[i];
+      video.src = media.video;
+      audio1.src = media.audio1;
+      audio2.src = media.audio2;
+
+      video.play();
+      audio1.play();
+      audio2.play();
+    }
+
   });
 
 });
+
