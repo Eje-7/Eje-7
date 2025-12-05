@@ -1,0 +1,106 @@
+@font-face {
+    font-family: "ur";
+    src: url("assets/ur.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- VIDEO DE FONDO --- */
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Para que quede detrás del contenido */
+    filter: brightness(45%); /* Oscurece para que se vea el texto */
+}
+
+
+
+/* --- ESTILO GENERAL --- */
+body.inicio {
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+/* --- CONTENEDOR --- */
+.inicio-container {
+    text-align: center;
+    background: none;        /* QUITAMOS LA CAJA */
+    padding: 0;              /* Ya no necesita padding grande */
+    border-radius: 0;        /* Quitamos bordes */
+    box-shadow: none;        /* Sin sombra */
+    backdrop-filter: none;   /* Quitamos blur */
+}
+
+/* --- TEXTO Y BOTÓN --- */
+.inicio-container h1 {
+    font-family: "ur", sans-serif;
+    font-size: 9.5rem;
+    font-weight: normal;
+    letter-spacing: 4px;
+    line-height: 0.8;
+    margin: 0;
+    
+    /* color */
+    color: #e73d8c;
+    text-shadow: 0 0 12px rgba(255, 255, 255, 0.25);
+
+    /* animaciones */
+    display: inline-block;
+    animation: vibra 5s ease-in-out infinite;
+}
+
+/* Para animación de onda (cada letra) */
+.inicio-container h1 span {
+    display: inline-block;
+    animation: wave 1.6s ease-in-out infinite;
+}
+
+/* delays automáticos */
+.inicio-container h1 span:nth-child(1)  { animation-delay: 0s; }
+.inicio-container h1 span:nth-child(2)  { animation-delay: 0.05s; }
+.inicio-container h1 span:nth-child(3)  { animation-delay: 0.1s; }
+.inicio-container h1 span:nth-child(4)  { animation-delay: 0.15s; }
+.inicio-container h1 span:nth-child(5)  { animation-delay: 0.2s; }
+.inicio-container h1 span:nth-child(6)  { animation-delay: 0.25s; }
+.inicio-container h1 span:nth-child(7)  { animation-delay: 0.3s; }
+.inicio-container h1 span:nth-child(8)  { animation-delay: 0.35s; }
+.inicio-container h1 span:nth-child(9)  { animation-delay: 0.4s; }
+.inicio-container h1 span:nth-child(10) { animation-delay: 0.45s; }
+
+/* Animación Opción B (vibración global leve) */
+@keyframes vibra {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+/* Efecto Onda (cada letra sube y baja) */
+@keyframes wave {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+
+#entrar {
+    background: #ff4757;
+    color: white;
+    border: none;
+    padding: 12px 25px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    transition: 0.3s;
+}
+
+#entrar:hover {
+    background: #ff6b81;
+    transform: scale(1.05);
+}

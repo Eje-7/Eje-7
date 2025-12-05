@@ -1,71 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>inicio</title>
-    <style>
-        
-        body.inicio {
-         background: linear-gradient(135deg, #0f0f0f, #1a1a1a);
-         color: #fff;
-        font-family: "Poppins", sans-serif;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-        margin: 0;
-        }
-
-        .inicio-container {
-        text-align: center;
-        background: rgba(255, 255, 255, 0.05);
-        padding: 40px 60px;
-        border-radius: 20px;
-        box-shadow: 0 0 30px rgba(255, 255, 255, 0.1);
-        }
-
-        .inicio-container h1 {
-        font-size: 2.5rem;
-        margin-bottom: 10px;
-        letter-spacing: 2px;
-        }
-
-        .inicio-container p {
-        color: #bbb;
-        margin-bottom: 20px;
-        }
-
-        #entrar {
-        background: #ff4757;
-        color: white;
-        border: none;
-        padding: 12px 25px;
-        border-radius: 10px;
-        cursor: pointer;
-        font-size: 1.1rem;
-        transition: 0.3s;
-        }
-
-        #entrar:hover {
-        background: #ff6b81;
-        transform: scale(1.05);
-        }
-
-    </style>
+    <title>Inicio</title>
+    <link rel="stylesheet" href="inicios.css">
 </head>
-<body>
-    <div class="inicio-container">
-    <h1>Bienvenido</h1>
-    <p>Haz clic para entrar a la galería de videos</p>
-    <button id="entrar">Entrar</button>
-  </div>
 
-  <script>
-    document.getElementById("entrar").addEventListener("click", () => {
-      window.location.href = "main.html";
-    });
-  </script>
+<body class="inicio">
+
+    <!-- VIDEO DE FONDO -->
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="assets/toluu.mp4" type="video/mp4">
+    </video>
+
+    <!-- CONTENIDO -->
+    <div class="inicio-container">
+        <h1 >
+          <span>R</span><span>E</span><span>S</span><span>O</span><span>N</span><span>A</span><span>N</span><span>C</span><span>I</span><span>A</span>
+          <br>
+          <span>U</span><span>R</span><span>B</span><span>A</span><span>N</span><span>A</span>
+        </h1>
+        <button id="entrar">Play</button>
+    </div>
+
+    <script>
+        document.getElementById("entrar").addEventListener("click", () => {
+            window.location.href = "main.html";
+        });
+    </script>
 
 </body>
 </html>
