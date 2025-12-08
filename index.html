@@ -16,7 +16,7 @@
 
     <!-- CONTENIDO -->
     <div class="inicio-container">
-        <h1 >
+        <h1>
           <span>R</span><span>E</span><span>S</span><span>O</span><span>N</span><span>A</span><span>N</span><span>C</span><span>I</span><span>A</span>
           <br>
           <span>U</span><span>R</span><span>B</span><span>A</span><span>N</span><span>A</span>
@@ -24,9 +24,26 @@
         <button id="entrar">Play</button>
     </div>
 
+    <!-- Script que lleva al main.html -->
     <script>
         document.getElementById("entrar").addEventListener("click", () => {
-            window.location.href = "main.html";
+            window.location.href = "pregunta.html";
+        });
+    </script>
+
+    <!-- Script para vibra del título y animación extra del botón -->
+    <script>
+        const titulo = document.querySelector(".inicio-container h1");
+        const boton = document.getElementById("entrar");
+
+        boton.addEventListener("mouseenter", () => {
+            titulo.classList.add("vibra-fuerte");
+            boton.classList.add("boton-activo");
+        });
+
+        boton.addEventListener("mouseleave", () => {
+            titulo.classList.remove("vibra-fuerte");
+            boton.classList.remove("boton-activo");
         });
     </script>
 

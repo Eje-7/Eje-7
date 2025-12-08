@@ -1,0 +1,78 @@
+@font-face {
+    font-family: "ur";
+    src: url("assets/ur.ttf") format("truetype");
+}
+
+/* VIDEO DE FONDO */
+.bg-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: brightness(45%);
+}
+
+/* BODY */
+body.pregunta {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: "Poppins", sans-serif;
+}
+
+/* CONTENEDOR */
+.contenedor-pregunta {
+    text-align: center;
+    padding: 20px 40px;
+}
+
+/* PREGUNTA */
+.pregunta-texto {
+    font-family: "ur", sans-serif;
+    font-size: 5rem;
+    font-weight: normal;
+    letter-spacing: 4px;
+    line-height: 0.8;
+    margin: 0;
+    
+    color: #f1c7db;
+    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    animation: respira 4s ease-in-out infinite;
+}
+
+/* Pequeña animación tipo respiración */
+@keyframes respira {
+    0%, 100% { transform: scale(1);}
+    50% { transform: scale(1.03);}
+}
+
+/* SUBTÍTULO */
+.pregunta-sub {
+    font-size: 1.1rem;
+    opacity: 0.8;
+    margin-bottom: 25px;
+}
+
+/* BOTÓN */
+#continuar {
+    background: rgba(255, 255, 255, 0.2);
+    border: 2px solid white;
+    border-radius: 30px;
+    padding: 14px 35px;
+    font-size: 1.3rem;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    backdrop-filter: blur(4px);
+}
+
+#continuar:hover {
+    background: rgba(255, 255, 255, 0.35);
+    transform: scale(1.1);
+}

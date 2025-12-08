@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pregunta</title>
+    <link rel="stylesheet" href="pregunta.css">
+</head>
+
+<body class="pregunta">
+
+    <!-- VIDEO DE FONDO -->
+    <video class="bg-video" autoplay muted loop playsinline>
+        <source src="assets/toluu.mp4" type="video/mp4">
+    </video>
+
+    <div class="contenedor-pregunta">
+        <h2 class="pregunta-texto">
+            ¿Qué papel desempeña la presencia o ausencia<br>
+            de los cuerpos y sus ritmos<br>
+            en la construcción del espacio urbano?
+        </h2>
+
+        <p class="pregunta-sub">
+            Observa. Escucha. Interactúa. <span>Utiliza audífonos para una mejor experiencia.</span>
+        </p>
+
+        <button id="continuar">Continuar</button>
+    </div>
+
+    <script>
+        document.getElementById("continuar").addEventListener("click", () => {
+            window.location.href = "main.html";
+        });
+    </script>
+
+</body>
+</html>
