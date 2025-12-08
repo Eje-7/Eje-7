@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const mediaList = [
     { video: "assets/basket.mp4", audio1: "assets/moto.mp3", audio2: "assets/voces_velarias.mp3" },
-    { video: "assets/combi4.mp4", audio1: "assets/sonido_voces1.mp3", audio2: "assets/voces_combi.mp3" },
+    { video: "assets/combi4.mp4", audio1: "assets/Combi/combi.mp3", audio2: "assets/Combi/voces_combi.mp3" },
     { video: "assets/cafe.mp4", audio1: "assets/voces_comedor.mp3", audio2: "assets/cubiertos_comedor.mp3" }
   ];
 
