@@ -81,9 +81,7 @@ body.inicio {
     50% { transform: translateY(-10px); }
 }
 
-/* ==========================
-   COLORES DEL TÍTULO (letra por letra)
-   ========================== */
+/*letras*/
 .inicio-container h1 span:nth-child(1) { color: #FF3D8E; }
 .inicio-container h1 span:nth-child(2) { color: #FF6FB1; }
 .inicio-container h1 span:nth-child(3) { color: #FF9AD1; }
@@ -102,7 +100,7 @@ body.inicio {
 .inicio-container h1 span:nth-child(15) { color: #C3E42E; }
 .inicio-container h1 span:nth-child(16) { color: #FFE11A; }
 
-/* ------------------- GLITCH FUERTE ------------------- */
+/* glitch */
 .vibra-fuerte {
     animation: glitch 0.25s infinite steps(2, end) !important;
     text-shadow:
@@ -129,9 +127,7 @@ body.inicio {
     100% { transform: translate(0px, 0px) skew(0deg); }
 }
 
-/* ==========================
-   BOTÓN PLAY REDONDO
-   ========================== */
+/* botón*/
 #entrar {
     margin: 20px auto 0 auto;
     width: 120px;
@@ -155,7 +151,7 @@ body.inicio {
     overflow: visible;
 }
 
-/* Aro expandible */
+
 #entrar::after {
     content: "";
     position: absolute;
@@ -174,7 +170,7 @@ body.inicio {
     100% { transform: translate(-50%, -50%) scale(1.8); opacity: 0; }
 }
 
-/* 🔥 BOTÓN ACTIVO (glitch suave) */
+
 .boton-activo {
     animation: botonGlitch 0.2s infinite;
     filter: brightness(1.4);
@@ -187,7 +183,7 @@ body.inicio {
     100% { transform: scale(1); }
 }
 
-/* Triángulo de PLAY */
+/* PLAY */
 #entrar::before {
     content: "";
     position: absolute;
@@ -201,7 +197,6 @@ body.inicio {
     left: 42%;
 }
 
-/* Hover */
 #entrar:hover {
     transform: scale(1.12);
     background: rgba(255, 255, 255, 0.25);
