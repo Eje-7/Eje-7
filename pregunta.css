@@ -1,6 +1,6 @@
 @font-face {
-    font-family: "ur";
-    src: url("assets/ur.ttf") format("truetype");
+    font-family: "le";
+    src: url("assets/le.ttf") format("truetype");
 }
 
 /* VIDEO DE FONDO */
@@ -29,20 +29,20 @@ body.pregunta {
 /* CONTENEDOR */
 .contenedor-pregunta {
     text-align: center;
-    padding: 20px 40px;
+    padding: 10px 40px;
 }
 
 /* PREGUNTA */
 .pregunta-texto {
-    font-family: "ur", sans-serif;
-    font-size: 5rem;
+    font-family: "le", sans-serif;
+    font-size: 3.5rem;
     font-weight: normal;
     letter-spacing: 4px;
-    line-height: 0.8;
+    line-height: 1;
     margin: 0;
     
-    color: #f1c7db;
-    text-shadow: 0 0 10px rgba(255,255,255,0.2);
+    color: #fcff57;
+    text-shadow: 0 0 10px rgba(247, 14, 220, 0.715);
     animation: respira 4s ease-in-out infinite;
 }
 
@@ -54,17 +54,34 @@ body.pregunta {
 
 /* SUBTÍTULO */
 .pregunta-sub {
-    font-size: 1.1rem;
+    font-family: "le", sans-serif;
+    font-size: 2.5rem;
     opacity: 0.8;
     margin-bottom: 25px;
+    color: rgb(156, 225, 255);
+    text-shadow: 0 0 10px rgba(247, 14, 220, 0.715);
+    line-height: 2;
 }
+
+/* recomendaciones */
+.rec {
+    font-family: "le", sans-serif;
+    font-size: 1.5rem;
+    opacity: 0.8;
+    margin-bottom: 25px;
+    color: rgb(189, 255, 156);
+    text-shadow: 0 0 10px rgba(247, 14, 220, 0.715);
+    line-height: 2;
+}
+
 
 /* BOTÓN */
 #continuar {
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(220, 68, 161, 0.2);
     border: 2px solid white;
     border-radius: 30px;
     padding: 14px 35px;
+    font-family: "le", sans-serif;
     font-size: 1.3rem;
     color: white;
     cursor: pointer;
