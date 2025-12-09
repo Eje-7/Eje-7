@@ -7,8 +7,8 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "cafe",
       full: "assets/videosm/comec.mp4",
       empty: "assets/videosm/comev.mp4",
-      audio1: "assets/audiosm/chico_comiendo.mp3",
-      audio2: "assets/audiosm/comedor/voces_comedor.mp3"
+      audio1: "assets/audiosm/Comedor/chico_comiendo.mp3",
+      audio2: "assets/audiosm/Comedor/voces_comedor.mp3"
     },
     {
       id: "centro",
@@ -28,15 +28,15 @@ document.addEventListener("DOMContentLoaded", () => {
       id: "oxo",
       full: "assets/videosm/oxc.mp4",
       empty: "assets/videosm/oxv.mp4",
-      audio1: "assets/audiosm/oxxo/oxxo_ambiente.mp3",
-      audio2: "assets/audiosm/oxxo/coches_oxxo.mp3"
+      audio1: "assets/audiosm/Oxxo/Oxxo_ambiente.mp3",
+      audio2: "assets/audiosm/Oxxo/coches_oxxo_video.mp3"
     },
     {
       id: "parque",
       full: "assets/videosm/parc.mp4",
       empty: "assets/videosm/parv.mp4",
       audio1: "assets/audiosm/Parque/vocesparque.mp3",
-      audio2: "assets/audiosm/parque/pelotas.mp3"
+      audio2: "assets/audiosm/Parque/pelotas.mp3"
     },
     {
       id: "velaria",
